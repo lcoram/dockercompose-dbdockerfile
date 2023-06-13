@@ -6,8 +6,12 @@ except:
     print("I am unable to connect to the database \n")
 
 cur = conn.cursor()
-cur.execute("""SELECT * FROM timeseries""")
+cur.execute("SELECT * FROM timeseries;")
 rows = cur.fetchall()
-print("Data: \n")
+print("Data: ", cur.rowcount)
+print("\n")
 for row in rows:
     print(row)
+
+cur.close()
+conn.close()
